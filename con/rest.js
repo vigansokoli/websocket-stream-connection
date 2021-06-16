@@ -4,9 +4,6 @@ const {apiKey} = require("../config/config")
 const url = "https://testnet.binance.vision/api/v3"
 const log = require("../helper/log")
 
-// message exchange is done here
-// curl --silent -X GET https://testnet.binance.vision/api/v3/exchangeInfo
-
 module.exports = {
     headers: {
         headers: {
