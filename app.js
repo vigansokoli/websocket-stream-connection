@@ -13,15 +13,15 @@ rest.getKey().then(listenKey => {
 const checkMessageTiming = (message)=>{
   try{
     let eventTime = message.E
-    let creationTime = message.T
-    let delayTime = eventTime - creationTime
+    let orderId = messsage.i
+    // let creationTime = message.T
+    // let delayTime = eventTime - creationTime
     
-    if(delayTime > config.maxDelay)
-      console.log(`There was a delay of ${delayTime} ms, for the followining order:`, message)
-    else
-     console.log(`Delay is ${delayTime} ms, which is less than ${config.maxDelay}`)
+    if(eventTime > config.maxDelay)
+      console.log(`There was a delay of ${eventTime} ms, for the order with id: `, orderId)
+
   }catch(err){
-    log.failure("Event time does not exist")
+    log.failure(err)
   }
 
 }

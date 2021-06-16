@@ -1,4 +1,6 @@
 const WebSocket = require("ws")
+const {streams} = require('../config/config')
+
 const log = require("../helper/log")
 
 module.exports = {
@@ -9,11 +11,13 @@ module.exports = {
     this._ws.on('open', () => {
       log.notice("WEBSOCKET OPEN")
 
-      // this._ws.send(JSON.stringify({
-      //   id: 1,
-      //   method: "SUBSCRIBE",
-      //   params: streams
-      // }))
+      if(streams.length!=0){
+        this._ws.send(JSON.stringify({
+          id: 1,
+          method: "SUBSCRIBE",
+          params: streams
+        }))
+      }
 
       this.heartbeat();
     })
@@ -29,6 +33,7 @@ module.exports = {
 
     this._ws.on('message', (data) => {
         try {
+          console.log(data)
           const message = JSON.parse(data)
 
           if (message.e && message.e == "executionReport") {
