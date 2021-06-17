@@ -1,6 +1,8 @@
-require('dotenv').config()
-const validator = require('validator')
-const log = require('../helper/log')
+import dotenv from 'dotenv'
+dotenv.config()
+
+import validator from 'validator'
+import log from '../helper/log'
 
 const streamsToArray = (streams)=> streams ? streams.split(' ').map(stream => stream.toLowerCase()) : ''
 

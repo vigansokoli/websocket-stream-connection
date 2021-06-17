@@ -1,10 +1,9 @@
-const axios = require("axios")
-const AxiosError = require("../errors/AxiosError.js")
-const {apiKey} = require("../config/config")
-const url = "https://testnet.binance.vision/api/v3"
-const log = require("../helper/log")
-
-module.exports = {
+import axios from "axios"
+import AxiosError from "../errors/AxiosError.js"
+import {apiKey} from "../config/config"
+console.log(apiKey)
+export default {
+    _url: "https://testnet.binance.vision/api/v3",
     headers: {
         headers: {
             "X-MBX-APIKEY": apiKey,
@@ -12,8 +11,7 @@ module.exports = {
         },
     },
     getKey() {
-        return axios.post(`${url}/userDataStream`, null, this.headers).then(result => {
-            log.notice("ListenKey retrieved")
+        return axios.post(`${this._url}/userDataStream`, null, this.headers).then(result => {
             this.listenKey = result.data.listenKey
             return Promise.resolve(this.listenKey)
         }).catch(error => AxiosError(error))
