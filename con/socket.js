@@ -14,7 +14,7 @@ module.exports = {
     this._ws.on('open', () => {
       log.notice("WEBSOCKET OPEN")
 
-      if (streams.length != 0) {
+      if (streams.length > 0) {
         this._ws.send(JSON.stringify({
           id: 1,
           method: "SUBSCRIBE",
@@ -40,11 +40,16 @@ module.exports = {
 
           if (message.e && message.e == "executionReport") {
             log.notice("Execution report Called")
+
+            if(! undefined){
+              throw "Event Time is not defined"
+            }
+
             callback(message)
           }
 
         } catch (err) {
-          log.failure("Parsing message failed", err)
+          log.failure(`Parsing message failed: ${err}`)
         }
       }),
 
