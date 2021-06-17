@@ -9,16 +9,14 @@ rest.getKey().then(listenKey => {
   log.failure(err.msg)
 })
 
-const checkMessageTiming = (eventTime)=>{
-    // let eventTime = message.E  
-    // if(!eventTime){
-    //   throw("Event Time is undefined")
-    // }
+const checkMessageTiming = (message)=>{
+    let eventTime = message.E  
+    let orderId = message.i
 
     // let creationTime = message.T
     // let delayTime = eventTime - creationTime
     
     if(eventTime > config.maxDelay)
-      log.success(`There was a delay of ${eventTime} ms, for the order with id: ${orderId ? orderId : "unknown"}`)
+      log.success(`There was a delay of ${eventTime-config.maxDelay} ms, for the order with id: ${orderId ? orderId : "unknown"}`)
 }
 

@@ -26,22 +26,20 @@ module.exports = {
     })
 
     this._ws.on('pong', () => {
-      log.success('RECEIVED: Pong');
+      log.notice('RECEIVED: Pong');
     });
 
     this._ws.on('ping', (data) => {
-      log.success('RECEIVED: Ping ');
+      log.notice('RECEIVED: Ping ');
       this._ws.pong(data);
     });
 
     this._ws.on('message', (data) => {
         try {
           const message = JSON.parse(data)
-
           if (message.e && message.e == "executionReport") {
-            log.notice("Execution report Called")
 
-            if(!eventTime){
+            if(!message.E){
               throw "Event Time is not defined"
             }
 
