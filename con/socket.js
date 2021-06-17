@@ -1,17 +1,20 @@
 const WebSocket = require("ws")
-const {streams} = require('../config/config')
+const {
+  streams,
+  url
+} = require('../config/config')
 
 const log = require("../helper/log")
 
 module.exports = {
-  _url: `wss://testnet.binance.vision/ws/`,
+  _url: url,
   _ws: "",
   create(path, callback) {
     this._ws = new WebSocket(`${this._url}${path}`)
     this._ws.on('open', () => {
       log.notice("WEBSOCKET OPEN")
 
-      if(streams.length!=0){
+      if (streams.length != 0) {
         this._ws.send(JSON.stringify({
           id: 1,
           method: "SUBSCRIBE",
@@ -33,16 +36,15 @@ module.exports = {
 
     this._ws.on('message', (data) => {
         try {
-          console.log(data)
           const message = JSON.parse(data)
 
           if (message.e && message.e == "executionReport") {
-            log.success("Execution report Called")
+            log.notice("Execution report Called")
             callback(message)
           }
 
         } catch (err) {
-          log.failure("Parsing message failed", message)
+          log.failure("Parsing message failed", err)
         }
       }),
 

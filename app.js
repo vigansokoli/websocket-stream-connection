@@ -1,4 +1,3 @@
-require('dotenv').config()
 const config = require("./config/config")
 const rest = require("./con/rest")
 const socket = require("./con/socket")
@@ -12,13 +11,14 @@ rest.getKey().then(listenKey => {
 
 const checkMessageTiming = (message)=>{
   try{
+
     let eventTime = message.E
-    let orderId = messsage.i
+    let orderId = message.c
     // let creationTime = message.T
     // let delayTime = eventTime - creationTime
     
     if(eventTime > config.maxDelay)
-      console.log(`There was a delay of ${eventTime} ms, for the order with id: `, orderId)
+      log.success(`There was a delay of ${eventTime} ms, for the order with id: ${orderId}`)
 
   }catch(err){
     log.failure(err)

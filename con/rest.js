@@ -13,7 +13,6 @@ module.exports = {
     },
     getKey() {
         return axios.post(`${url}/userDataStream`, null, this.headers).then(result => {
-            // console.log(result.data)
             log.notice("ListenKey retrieved")
             this.listenKey = result.data.listenKey
             return Promise.resolve(this.listenKey)
