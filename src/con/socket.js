@@ -41,7 +41,7 @@ module.exports = {
           if (message.e && message.e == "executionReport") {
             log.notice("Execution report Called")
 
-            if(! undefined){
+            if(!eventTime){
               throw "Event Time is not defined"
             }
 
