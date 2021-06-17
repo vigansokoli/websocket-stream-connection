@@ -1,7 +1,7 @@
 
-import log from "../helper/log"
+import log from "./log"
 
-export default function checkMessageTiming (message, maxDelay){
+export default function isEventResponseDelayed (message, maxDelay){
       if (!message.e || message.e != "executionReport") {
         return
       }
@@ -16,6 +16,10 @@ export default function checkMessageTiming (message, maxDelay){
       // let creationTime = message.T
       // let delayTime = eventTime - creationTime
       
-      if(eventTime > maxDelay)
+      if(eventTime > maxDelay){
         log.success(`There was a delay of ${eventTime-maxDelay} ms, for the order with id: ${orderId ? orderId : "unknown"}, with the status: ${message.X}`)
+        return true
+      }
+
+      return false
 }
