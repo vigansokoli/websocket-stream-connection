@@ -35,8 +35,6 @@ export default {
             side: side
         }
 
-        console.log(side)
-
         let queryData = JSONToQueryString(data)
 
         return axios.post(`${this._url}/order?${queryData}&signature=${signature(queryData,secretKey)}`, null, this.headers).then(message => {
