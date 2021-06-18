@@ -32,18 +32,19 @@ export default {
             // timeINForce:"GTC",
             quantity: "0.001",
             timestamp: Date.now(),
-            side
-            // price:"9000"
+            side: side
         }
+
+        console.log(side)
 
         let queryData = JSONToQueryString(data)
 
         return axios.post(`${this._url}/order?${queryData}&signature=${signature(queryData,secretKey)}`, null, this.headers).then(message => {
             return Promise.resolve(message.data)
-        }).catch(function(error) {
-            if (error.code == '-2010') {
+        }).catch(error => {
+            if (error.response.data.code == '-2010') {
                 this.isSell = !this.isSell
-                return spotOrder()
+                return this.spotOrder()
             } else {
                 return AxiosError(error)
             }
