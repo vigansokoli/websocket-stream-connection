@@ -1,16 +1,21 @@
-Running Instructions for the Websocket
+#Running Instructions for the Websocket
 ==============
 
-# *Pre-requirements*
+## *Pre-requirements*
 1. Go to .env and input the required credentials. More instructions can be found there
-2. Run : npm install
+2. Run the following code: <br> `npm install`
+3. Procceed to one of the following options below.
 
-# OPTION 1: RUN THE WEBSOCKET EXECUTION REPORT LISTENER AND A SPOT ORDER EVERY TWO SECONDS AUTOMATICALLY, BECOME A "BUY" ORDER FROM "SELL" WHEN THE INSUFFICIENT BALACE ARRIVES.
-npm start
+### Option 1: Run the Web Socket Listener and the automatic New Spot Orders in a 2 second interval
+Run the websocket and spot orders automatically and just view the execution report results. When insufficient balance is reached, the **SELL** orders are reversed to ***BUY***, for **BTCUSDT**, ***MARKET*** buys of the quantity 0.001.
+Run the following code:
+<br>`npm start`
 
-# OPTION 2: RUN ONLY A SINGLE SPOT ORDER
-npm run-script spot
+### Option 2: Run a spot order
+When insufficient balance is reached, the **SELL** orders are reversed to ***BUY***, for **BTCUSDT**, ***MARKET*** buys of the quantity 0.001.
+Run the following code:
+<br>`npm run-script spot`
 
-
-# OPTION 3: RUN THE WEBSOCKET EXECUTION REPORT LISTENER
-npm run-script socket
+### Option 3: Run the Web Socket Listener
+Run the following code: <br>
+`npm run-script socket`
