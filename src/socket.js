@@ -10,5 +10,5 @@ rest.getKey().then(listenKey => {
         isEventResponseDelayed(message, maxDelay)
     });
 }).catch(err => {
-    log.failure(err.msg)
+    log.failure(err)
 })

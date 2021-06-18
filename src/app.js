@@ -10,9 +10,11 @@ rest.getKey().then(listenKey => {
   setTimeout(()=>{
     rest.spotOrder().then(message =>{
         log.success(JSON.stringify(message))
-    });
+    }).catch(err=>{
+      log.failure(JSON.stringify(err))
+    })
+    
   }, 2000)
 }).catch(err=>{
   log.failure(err.msg)
 })
-

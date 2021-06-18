@@ -28,7 +28,7 @@ export default {
             symbol: "BTCUSDT",
             type: "MARKET",
             // timeINForce:"GTC",
-            quantity: "0.01",
+            quantity: "0.0001",
             timestamp: Date.now(),
             side: "BUY"
             // price:"9000"
@@ -36,10 +36,7 @@ export default {
 
         let queryData = JSONToQueryString(data)
 
-        console.log(queryData)
-
         return axios.post(`${this._url}/order?${queryData}&signature=${signature(queryData,secretKey)}`, null , this.headers).then(message => {
-            console.log(message.data)
             return Promise.resolve(message.data)
         }).catch(error => AxiosError(error))
     }

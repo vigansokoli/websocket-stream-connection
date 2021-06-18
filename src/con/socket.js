@@ -1,9 +1,9 @@
 import WebSocket from "ws"
-import {streams,url, maxDelay} from '../config/config'
+import {streams, maxDelay} from '../config/config'
 import log from "../helper/log"
 
 export default {
-  _url: url,
+  _url: "wss://testnet.binance.vision/ws/",
   _ws: "",
   create(path, callback) {
     log.notice('OPENING WEBSOCKET...');
