@@ -1,4 +1,4 @@
-#Running Instructions for the Websocket
+# Running Instructions for the Assignment
 ==============
 
 ## *Pre-requirements*
