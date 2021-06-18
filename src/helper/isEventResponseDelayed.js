@@ -19,8 +19,8 @@ export default function isEventResponseDelayed (message, maxDelay){
       let creationTime = message.T
       let delayTime = eventTime - creationTime
       
-      if(delayTime < maxDelay){
-        log.success(`The delay time: ${delayTime}ms is less than the maxDelay: ${maxDelay}ms, for the order with id: ${orderId ? orderId : "unknown"}, with the status: ${message.X}`)
+      if(delayTime > maxDelay){
+        log.notice(`The delay time: ${delayTime} > ${maxDelay}ms : Max Delay for the orderId: ${orderId ? orderId : "unknown"}`)
         return true
       }
 
