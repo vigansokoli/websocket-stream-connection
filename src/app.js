@@ -7,9 +7,9 @@ import isEventResponseDelayed from './helper/isEventResponseDelayed'
 rest.getKey().then(listenKey => {
   socket.create(listenKey,(message) =>{isEventResponseDelayed(message, config.maxDelay)});
 
-  setTimeout(()=>{
+  setInterval(()=>{
     rest.spotOrder().then(message =>{
-        log.success(JSON.stringify(message))
+        // log.success(JSON.stringify(message))
     }).catch(err=>{
       log.failure(JSON.stringify(err))
     })

@@ -63,6 +63,7 @@ export default {
         log.notice('PING SERVER');
       }
     }, 30 * 60 * 1000);
+    // Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.
     // A ping refresh every 30 minutes, the listenKey lasts for an hour so this will do the trick
   },
 }
