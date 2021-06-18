@@ -12,13 +12,13 @@ export default {
     this._ws.on('open', () => {
       log.notice('WEBSOCKET OPEN')
 
-      if (streams.length > 0) {
-        this._ws.send(JSON.stringify({
-          id: 1,
-          method: "SUBSCRIBE",
-          params: streams
-        }))
-      }
+      // if (streams.length > 0) {
+      //   this._ws.send(JSON.stringify({
+      //     id: 1,
+      //     method: "SUBSCRIBE",
+      //     params: streams
+      //   }))
+      // }
 
       this.heartbeat();
     })

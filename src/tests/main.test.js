@@ -1,4 +1,3 @@
-import axios from 'axios';
 import rest from '../con/rest';
 import timing from '../helper/isEventResponseDelayed'
 
